@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for fullstack3-late-surf-9771 on 2024-07-02T17:23:03+03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'fullstack3-late-surf-9771'
+primary_region = 'ams'
+
+[build]
+
+[ENV]
+  PORT = "3000"
+  MONGODB_URL="mongodb+srv://fullstack:admin@cluster0.bu7hdoy.mongodb.net/phonebookApp?retryWrites=true&w=majority&appName=Cluster0"
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
